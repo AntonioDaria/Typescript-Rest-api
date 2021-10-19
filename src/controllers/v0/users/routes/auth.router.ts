@@ -27,7 +27,7 @@ async function comparePasswords(plainTextPassword: string, hash: string): Promis
 }
 
 function generateJWT(user: User): string {
-    //@TODO Use jwt to create a new JWT Payload containing
+    //@TODO Use jwt to create a new JWT Payload
     return jwt.sign(user.toJSON(), config.jwt.secret)
   
 }
@@ -58,7 +58,7 @@ router.get('/verification',
     async (req: Request, res: Response) => {
         return res.status(200).send({ auth: true, message: 'Authenticated.' });
 });
-
+// generates a token if user authenticated
 router.post('/login', async (req: Request, res: Response) => {
     const email = req.body.email;
     const password = req.body.password;
